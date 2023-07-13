@@ -150,7 +150,7 @@ const TableList: React.FC<unknown> = () => {
         actionRef={actionRef}
         rowKey="id"
         search={{
-          labelWidth: 120,
+          labelWidth: 70,
         }}
         toolBarRender={() => [
           <Button
@@ -161,6 +161,7 @@ const TableList: React.FC<unknown> = () => {
             新建
           </Button>,
         ]}
+
         request={async (params, sorter, filter) => {
           const { data, success } = await queryUserList({
             ...params,
@@ -201,6 +202,7 @@ const TableList: React.FC<unknown> = () => {
           <Button type="primary">批量审批</Button>
         </FooterToolbar>
       )}
+
       <CreateForm
         onCancel={() => handleModalVisible(false)}
         modalVisible={createModalVisible}

@@ -70,7 +70,7 @@ const columns: ProColumns<GithubIssueItem>[] = [
       closed: {
         text: '已解决',
         status: 'Success',
-        disabled: true,
+        // disabled: true,//是否禁用
       },
       processing: {
         text: '解决中',
@@ -105,10 +105,11 @@ const columns: ProColumns<GithubIssueItem>[] = [
     hideInSearch: true,
   },
   {
-    title: '创建时间',
-    dataIndex: 'created_at',
-    valueType: 'dateRange',
-    hideInTable: true,
+    title: '更新时间',
+    key: 'updateTime',
+    dataIndex: 'updated_at',
+    valueType: 'date',
+    // hideInTable: true,//是否展示在table中
     search: {
       transform: (value) => {
         return {
@@ -162,8 +163,8 @@ export default () => {
           params,
         });
       }}
-      editable={{
-        type: 'multiple',
+      editable={{//是否支持多编辑
+        type: 'single',//single 或者 multitply
       }}
       columnsState={{
         persistenceKey: 'pro-table-singe-demos',
@@ -175,6 +176,10 @@ export default () => {
       rowKey="id"
       search={{
         labelWidth: 'auto',
+        resetText: 'reset',
+        searchText:'search',
+        span:6,
+        showHiddenNum:true
       }}
       options={{
         setting: {
