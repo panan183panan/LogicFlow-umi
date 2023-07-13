@@ -29,6 +29,11 @@ export default defineConfig({
       path: '/table',
       component: './Table',
     },
+    {
+      name: ' proTable测试',
+      path: '/protable',
+      component: './TestCom',
+    },
   ],
   npmClient: 'yarn',
 });

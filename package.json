@@ -16,7 +16,8 @@
     "@logicflow/core": "^1.2.7",
     "@logicflow/extension": "^1.2.7",
     "@umijs/max": "^4.0.69",
-    "antd": "^5.4.0"
+    "antd": "^5.4.0",
+    "umi-request": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",
