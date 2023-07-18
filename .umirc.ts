@@ -34,6 +34,11 @@ export default defineConfig({
       path: '/protable',
       component: './ProTable',
     },
+    {
+      name: ' myProTable',
+      path: '/myprotable',
+      component: './Package',
+    },
   ],
   npmClient: 'yarn',
 });

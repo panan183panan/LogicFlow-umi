@@ -2,7 +2,7 @@ import { EllipsisOutlined, PlusOutlined } from '@ant-design/icons';
 import type { ActionType, ProColumns } from '@ant-design/pro-components';
 import { ProTable, TableDropdown } from '@ant-design/pro-components';
 import { Button, Dropdown, Space, Tag } from 'antd';
-import { useRef } from 'react';
+import { FC, useRef } from 'react';
 import request from 'umi-request';
 export const waitTimePromise = async (time: number = 100) => {
   return new Promise((resolve) => {
@@ -33,11 +33,6 @@ type GithubIssueItem = {
 };
 
 const columns: ProColumns<GithubIssueItem>[] = [
-  {
-    dataIndex: 'index',
-    valueType: 'indexBorder',
-    width: 48,
-  },
   {
     title: '标题',
     dataIndex: 'title',
@@ -82,7 +77,7 @@ const columns: ProColumns<GithubIssueItem>[] = [
     disable: true,
     title: '标签',
     dataIndex: 'labels',
-    search: false,
+    search: false,//是否显示在search组件中
     renderFormItem: (_, { defaultRender }) => {
       return defaultRender(_);
     },
@@ -109,6 +104,7 @@ const columns: ProColumns<GithubIssueItem>[] = [
     key: 'updateTime',
     dataIndex: 'updated_at',
     valueType: 'date',
+    hideInSearch: true,//是否展示在table中
     // hideInTable: true,//是否展示在table中
     search: {
       transform: (value) => {
@@ -124,14 +120,14 @@ const columns: ProColumns<GithubIssueItem>[] = [
     valueType: 'option',
     key: 'option',
     render: (text, record, _, action) => [
-      <a
-        key="editable"
-        onClick={() => {
-          action?.startEditable?.(record.id);
-        }}
-      >
-        编辑
-      </a>,
+      // <a
+      //   key="editable"
+      //   onClick={() => {
+      //     action?.startEditable?.(record.id);
+      //   }}
+      // >
+      //   编辑
+      // </a>,
       <a href={record.url} target="_blank" rel="noopener noreferrer" key="view">
         查看
       </a>,
@@ -147,7 +143,11 @@ const columns: ProColumns<GithubIssueItem>[] = [
   },
 ];
 
-export default () => {
+type isMyTable = {
+  [key: string]: any
+}
+
+const MyProTable: FC<isMyTable> = (props) => {
   const actionRef = useRef<ActionType>();
   return (
     <ProTable<GithubIssueItem>
@@ -176,10 +176,10 @@ export default () => {
       rowKey="id"
       search={{
         labelWidth: 'auto',
-        resetText: 'reset',
-        searchText:'search',
-        span:6,
-        showHiddenNum:true
+        resetText: '重置',
+        searchText: '搜索',
+        span: 7,
+        showHiddenNum: true
       }}
       options={{
         setting: {
@@ -242,3 +242,6 @@ export default () => {
     />
   );
 };
+
+
+export default MyProTable
