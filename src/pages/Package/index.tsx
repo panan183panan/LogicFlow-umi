@@ -164,6 +164,11 @@ const Package: FC<isPackage> = () => {
     })
   }
 
+  // 其他属性，参考protable
+  const otherstyle = {
+    
+  }
+
   return (
     <MyProTable
       columns={columns}
@@ -171,6 +176,7 @@ const Package: FC<isPackage> = () => {
       title="自定义表格"
       requestData={getTenantData}
       toolBarRender={handlerBar}
+      otherstyle={otherstyle}
     />
   )
 } 

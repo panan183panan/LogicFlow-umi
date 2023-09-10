@@ -20,7 +20,7 @@ type isMyTable = {
 }
 
 const MyProTable: FC<isMyTable> = (props) => {
-  const { columns, toolBarRender, span, requestData, title } = props
+  const { columns, toolBarRender, span, requestData, title, otherstyle } = props
   const actionRef = useRef<ActionType>();
 
   const reload = () => {
@@ -76,6 +76,7 @@ const MyProTable: FC<isMyTable> = (props) => {
       dateFormatter="string"
       headerTitle={title ||"高级表格"}
       toolBarRender={toolBarRender}
+      {...otherstyle}
     />
   );
 };
